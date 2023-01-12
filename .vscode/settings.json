@@ -1,0 +1,13 @@
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "vue-helper.alias": {
+    "@": "src"
+  },
+  "vue-helper.componentPrefix": {
+    "alias": "@",
+    "path": "src"
+  },
+  "vetur.validation.template": false,
+  "editor.tabSize": 2
+}
