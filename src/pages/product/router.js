@@ -11,7 +11,7 @@ const routes = [
       },
       {
         path: "skus-manage",
-        name: "product-skus-manage",
+        name: "product-sku-manage",
         component: () => import("./sku-manage/index.vue"),
       },
       {

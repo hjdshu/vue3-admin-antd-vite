@@ -89,9 +89,10 @@ export default {
         matched = route.matched;
         if (matched.length >= 4) {
           openKeys = [matched[1].name, matched[2].name];
-        }
-        if (matched.length >= 3) {
+        } else if (matched.length >= 3) {
           openKeys = [matched[1].name];
+        } else {
+          openKeys = [];
         }
         this.openKeys = openKeys;
         this.selectedKeys = [route.name];
