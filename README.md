@@ -2,8 +2,10 @@
 
 ## 开发
 
+```
 yarn
-yarn serve
+yarn dev
+```
 
 ## 需要注意的点
 
