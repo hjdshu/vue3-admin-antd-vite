@@ -79,23 +79,33 @@ function computedMenus(resource, premission) {
   });
   let res = [];
 
+  // 这里考虑使用对象应用的方式做树构建, 这样性能最优
+  const mapMenus = {};
   source.forEach((item) => {
-    if (!item.parent_name) {
-      item.children = [];
-      res.push(item);
-      console.log(item.name);
-      distCreateMeuns(resource, item.name, item.children);
+    const name = item.name;
+    const parentName = item.parent_name;
+    if (!mapMenus[name]) {
+      mapMenus[name] = {
+        children: [],
+      };
+    }
+    mapMenus[name] = {
+      ...item,
+      children: mapMenus[name].children,
+    };
+
+    const treeMenu = mapMenus[name];
+    if (!parentName) {
+      res.push(treeMenu);
+    } else {
+      if (!mapMenus[parentName]) {
+        mapMenus[parentName] = {
+          children: [treeMenu],
+        };
+      } else {
+        mapMenus[parentName].children.push(treeMenu);
+      }
     }
   });
-
-  function distCreateMeuns(resource, parent, distRes) {
-    source.forEach((item) => {
-      if (item.parent_name == parent) {
-        item.children = [];
-        distRes.push(item);
-        distCreateMeuns(resource, item.name, item.children);
-      }
-    });
-  }
   return res;
 }

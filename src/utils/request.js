@@ -2,11 +2,7 @@ import axios from "axios";
 import { errorToast } from "@/utils/index";
 
 let BASE_URL = "";
-if (process.env.NODE_ENV === "development") {
-  BASE_URL = "/dev";
-} else {
-  BASE_URL = "/";
-}
+BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const instance = axios.create({
   baseURL: BASE_URL,
